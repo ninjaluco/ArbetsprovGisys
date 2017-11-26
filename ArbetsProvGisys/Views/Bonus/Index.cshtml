@@ -1,0 +1,62 @@
+﻿@using ArbetsProvGisys.Models.VM
+@model BonusCalcVM
+<h1>Bonus Calculations</h1>
+<div>
+    <form asp-controller="bonus" asp-action="index">
+
+        <table id="listDiv">
+
+            <tr id="thead">
+                <td>Förnamn</td>
+                <td>Efternamn</td>
+                <td>Timmar</td>
+                <td>Bonus</td>
+            </tr>
+            @for (int i = 0; i < Model.ConsultList.Count(); i++)
+            {
+                <tr>
+                    <td>@Model.ConsultList[i].Firstname</td>
+                    <td>@Model.ConsultList[i].Lastname</td>
+                    <td><input asp-for="@Model.ConsultList[i].Hours" /></td>
+                    <td>@Model.ConsultList[i].Bonus</td>
+                    <td></td>
+                </tr>
+            }
+            <td></td>
+            <td></td>
+            <td></td>
+        </table>
+        <label asp-for="@Model.NettoRes">Nettorest</label>
+        <input asp-for="@Model.NettoRes" />
+        <br/>
+        <input type="submit" value="Ok" />
+    </form>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script>
+        @*$(document).ready(function () {
+
+            $('#calcBtn').click(function () {
+                let hoursTot = 0;
+
+                for (var i = 1; i <= @Model.ConsultList.Count()+1; i++) {
+                    hoursTot += parseInt($('#' + i).val());
+                }
+                alert(hoursTot);
+                console.log(hoursTot);
+            });
+
+        })*@
+
+    </script>
+</div>

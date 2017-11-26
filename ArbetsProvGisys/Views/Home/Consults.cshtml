@@ -1,0 +1,42 @@
+﻿@using ArbetsProvGisys.Models.VM
+@model HomeConsultsVM
+<h1>Konsulter</h1>
+<div>    
+    <table id="listDiv">
+        <thead>
+            <tr id="thead">
+                <td>Id</td>
+                <td>Förnamn</td>
+                <td>Efternamn</td>
+                <td>Datum</td>
+            </tr>
+        </thead>
+        @foreach (var consult in Model.HomeConsultsArr){
+            <tr>
+                <td>@consult.Id</td>
+                <td>@consult.Firstname</td>
+                <td>@consult.Lastname</td>
+                <td>@consult.Date.ToShortDateString()</td>                
+                <td><form asp-controller="home" asp-action="delete" asp-route-id="@consult.Id"><input type="submit" value="Delete" /></form></td>
+            </tr>
+        }
+    </table>
+</div>
+
+@*Hur får jag nedre delen att prata på ett bra sätt med övre delen? Det som fattas är en update*@
+<div>
+    <form asp-controller="home" asp-action="create" method="post">
+        <label asp-for="@Model.HomeConsults.Firstname"></label>
+        <input asp-for="@Model.HomeConsults.Firstname" />
+        @*<span asp-validation-for="@Model.HomeConsults.Firstname"></span>*@
+
+        <label asp-for="@Model.HomeConsults.Lastname"></label>
+        <input asp-for="@Model.HomeConsults.Lastname" />
+
+        <label asp-for="@Model.HomeConsults.Date"></label>
+        <input asp-for="@Model.HomeConsults.Date" type="date" />
+               
+        <br />
+        <input type="submit" value="Save" />
+    </form>
+</div>

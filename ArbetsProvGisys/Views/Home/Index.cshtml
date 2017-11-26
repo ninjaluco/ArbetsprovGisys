@@ -1,0 +1,13 @@
+﻿@using ArbetsProvGisys.Models.VM
+@model HomeIndexVM
+
+<h1>Starting page</h1>
+
+<div id="BtnDiv">
+    <a  asp-controller="home"  asp-action="Consults">
+        <input type="submit" value="Konsulter" />
+    </a>
+    <a asp-controller="bonus" asp-action="index">
+        <input type="submit" value="Bonuscalk" />
+    </a>
+</div>
